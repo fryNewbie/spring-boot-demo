@@ -1,0 +1,55 @@
+spring:
+  datasource:
+    dynamic:
+      primary: master
+      datasource:
+        master:
+          username: root
+          password: 123456
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/spring?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC
+        slave:
+          username: root
+          password: 123456
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/test?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC
+  application:
+    name: data-test
+  redis:
+    # redis数据库索引（默认为0），我们使用索引为3的数据库，避免和其他数据库冲突
+    database: 3
+    # redis服务器地址（默认为localhost）
+    host: localhost
+    # redis端口（默认为6379）
+    port: 6379
+    # redis访问密码（默认为空）
+    password: cacjszx.132
+    timeout: 60s
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1ms
+        min-idle: 0
+
+
+
+
+logging:
+  level:
+    com:
+      example:
+        demo:
+          book:
+            mapper: debug
+          user:
+            mapper: debug
+      baomidou:
+            dynamic: debug
+
+
+
+server:
+  port: 8080
+  servlet:
+    context-path: /test
